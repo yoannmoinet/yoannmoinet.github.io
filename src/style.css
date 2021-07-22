@@ -62,6 +62,7 @@ h2 {
 
 body {
   color: #555;
+  background: rgb(246, 246, 246);
 }
 
 h1,
@@ -95,7 +96,7 @@ a {
 /* 07 Secondary colors */
 
 body {
-  background: white;
+  /* background: white; */
   color: #566b78;
 }
 
@@ -335,6 +336,20 @@ footer .button {
 
 .resource-css-reference .resource-icon {
   padding: 20px;
+}
+
+.get-in-touch {
+  /* width: 100%; */
+  margin-top: -2em;
+  margin-bottom: 2em;
+  display: flex;
+}
+
+.get-in-touch a {
+  display: block;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Responsiveness */
