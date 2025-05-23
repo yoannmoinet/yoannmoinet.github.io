@@ -91,6 +91,15 @@ pre {
 
 a {
   color: #1689be;
+  /* Ensure 'a' tags can be transformed */
+  display: inline-block;
+  text-decoration: none; /* Optional: common to remove underline for modern designs */
+  transition: none; /* Remove any default transitions that might conflict with anime.js */
+}
+
+main ul li a {
+  /* Specificity for links in lists, ensure they are block/inline-block for transform */
+  display: inline-block; 
 }
 
 /* 07 Secondary colors */
@@ -161,14 +170,27 @@ body {
 
 main {
   padding: 4em 1em;
+  perspective: 1500px; /* Added for 3D children */
+  transform-style: preserve-3d; /* Ensure 3D children are rendered correctly */
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 header {
-  background-color: #23b9ff;
+  /* background: linear-gradient(45deg, #3a7bd5, #3a6073); */ /* Old background */
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #3e6b88);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   line-height: 1.2;
   max-width: none;
   padding: 3vw 2em;
   text-align: center;
+  perspective: 1000px; /* Added for 3D hover effects on children */
 }
 
 #logo {
@@ -176,26 +198,70 @@ header {
   height: 120px;
   vertical-align: top;
   width: 120px;
+  transition: transform 0.3s ease-in-out; /* Can be kept or removed, JS will override */
+  transform-style: preserve-3d; /* For better 3D rendering */
 }
+
+/* #logo:hover will be handled by JavaScript mousemove */
 
 header h1 {
   color: rgb(255, 255, 255);
   font-size: 2.5em;
   font-weight: 300;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  /* transition: transform 0.3s ease-in-out; */
 }
+
+header h1 .letter {
+  display: inline-block; /* For individual letter transformation */
+}
+
+/* header h1:hover will be handled by JS if needed, or letter animations replace it */
 
 header h2 {
   color: rgb(255, 255, 255);
   font-size: 1.5em;
   font-weight: 300;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  /* transition: transform 0.3s ease-in-out; */
 }
+
+header h2 .letter {
+  display: inline-block; /* For individual letter transformation */
+}
+
+/* header h2:hover will be handled by JS if needed, or letter animations replace it */
 
 header h3 {
   color: rgb(255, 255, 255);
   font-weight: 300;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  /* transition: transform 0.3s ease-in-out; */
 }
 
+header h3 .letter {
+  display: inline-block; /* For individual letter transformation */
+}
+
+/* header h3:hover will be handled by JS if needed, or letter animations replace it */
+
 /* Classes */
+
+/* Styling for showcase list items */
+.animated-section ul.showcase-list li {
+    opacity: 0; /* Initially hidden */
+    transform: translateX(-50px) rotateY(-45deg); /* Initial state: off to the left and rotated */
+    transform-origin: left center; /* Animate from the left edge */
+    /* perspective: 400px; */ /* Usually not needed here if parent has perspective */
+    /* No transition here, anime.js will handle it */
+}
+
+.animated-section {
+  opacity: 0;
+  transform: rotateY(-90deg) translateX(-100px); /* Initial state for 3D flip-in */
+  transform-origin: left center; /* Rotate from the left edge */
+  /* transition: opacity 0.8s ease-out, transform 0.8s ease-out; */ /* JS will handle animation */
+}
 
 .animate {
   animation-duration: 1s;
@@ -392,4 +458,57 @@ footer .button {
   .resource-icon {
     margin: 0 auto 1em;
   }
+}
+
+/* Accessibility: Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Ensure elements animated by JS are in their final state */
+  /* Specifically for .animated-section if JS is disabled for motion */
+  .animated-section {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Reset hover states that rely on transitions disabled above */
+  /* #logo:hover is now JS controlled, ensure no !important transform overrides if JS is disabled by reduced motion */
+  #logo:hover {
+    /* transform: none !important; */ /* Let JS handle or ensure it's static if motion is reduced */
+  }
+
+  /* header h1:hover, h2:hover, h3:hover CSS transitions were removed, so specific overrides here might not be needed
+     unless JS adds hover effects that need disabling for reduced motion.
+     The general rule for `transition-duration: 0.01ms !important;` should cover most cases.
+  */
+  header h1:hover,
+  header h2:hover,
+  header h3:hover {
+    /* transform: none !important; */ 
+  }
+}
+
+#cursor-follower {
+    position: fixed; /* Follows viewport */
+    top: 0; left: 0; /* Initial position, will be updated by JS */
+    width: 20px;
+    height: 20px;
+    background-color: rgba(100, 220, 150, 0.5); /* A semi-transparent color */
+    border-radius: 50%;
+    pointer-events: none; /* So it doesn't interfere with mouse events on other elements */
+    z-index: 9999; /* Keep it on top */
+    opacity: 0; /* Initially hidden, fade in when mouse moves */
+    transform: translate(-50%, -50%) scale(0); /* Center on cursor and initially scaled down */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Smooth appearance/disappearance */
+}
+body:hover #cursor-follower { /* Show when mouse is over the body */
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
