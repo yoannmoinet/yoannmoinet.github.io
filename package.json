@@ -1,0 +1,19 @@
+{
+    "name": "yoannmoinet.github.io",
+    "version": "1.0.0",
+    "description": "Personal website",
+    "main": "src/index.js",
+    "repository": "git@github.com:yoannmoinet/yoannmoinet.github.io.git",
+    "author": "Yoann Moinet <yo@nnmoi.net>",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "start": "ws"
+    },
+    "dependencies": {
+        "three": "0.135.0"
+    },
+    "devDependencies": {
+        "local-web-server": "5.1.1"
+    }
+}

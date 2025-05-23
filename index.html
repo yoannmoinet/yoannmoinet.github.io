@@ -3,6 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>Yoann Moinet | JavaScript and NodeJS Developer</title>
+    <link rel="stylesheet" type="text/css" href="./src/style.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+    </style>
     <link rel="shortcut icon" href="./assets/logo/logo_140_white_squared.png">
     <link rel="icon" sizes="16x16 32x32 64x64" href="./assets/logo/favicon.ico">
     <link rel="icon" type="image/png" sizes="196x196" href="./assets/logo/favicon-192.png">
@@ -43,17 +49,10 @@
     <meta name="msapplication-TileImage" content="./assets/logo/favicon-144.png">
     <meta name="msapplication-config" content="./assets/browserconfig.xml">
     <meta name="description" content="I'm a JavaScript and NodeJS developer.">
-
-    <link rel="stylesheet" type="text/css" href="./src/style.css">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        }
-
-    </style>
 </head>
 
 <body>
+    <canvas id="renderer"></canvas>
     <header>
         <img id="logo" src="./assets/logo/logo_140_white_squared.png" alt="Yoann Moinet logo">
         <h1>👋 Bon matin!</h1>
@@ -129,6 +128,7 @@
         </p>
         <p>You can contact me via <a href="https://forms.gle/E5JLobBKMZmLeh4HA">this form</a><!-- <a href="#" class="cryptedmail" data-name="yo" data-domain="nnmoi" data-tld="net" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"></a> -->. And get <a href="./assets/resume.pdf" target="_blank">my resume here</a>.</p>
     </main>
+    <script src="./src/index.js" type="module"></script>
 </body>
 
 </html>
