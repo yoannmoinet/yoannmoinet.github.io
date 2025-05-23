@@ -45,6 +45,7 @@
     <meta name="description" content="I'm a JavaScript and NodeJS developer.">
 
     <link rel="stylesheet" type="text/css" href="./src/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -61,42 +62,53 @@
         <h3>I'm a JavaScript and NodeJS developer.</h3>
     </header>
     <main>
-        <p class="get-in-touch"><a class="button" href="https://forms.gle/E5JLobBKMZmLeh4HA" target="_blank"><strong>Get in touch 📞</strong></a></p>
-        <p>Currently, I'm working at <a href="https://datadoghq.com" target="_blank">Datadog</a> in the FrontEnd Platform team I created, as a Staff Software Engineer.</p>
-        <p>
-            Previously :
-            <ul>
-                <li><a href="https://zendesk.com" target="_blank">Zendesk</a> as a Senior Software Engineer.</li>
+        <div class="animated-section">
+            <p class="get-in-touch"><a class="button" href="https://forms.gle/E5JLobBKMZmLeh4HA" target="_blank"><strong>Get in touch 📞</strong></a></p>
+        </div>
+        <div class="animated-section">
+            <p>Currently, I'm working at <a href="https://datadoghq.com" target="_blank">Datadog</a> in the FrontEnd Platform team I created, as a Staff Software Engineer.</p>
+        </div>
+        <div class="animated-section">
+            <p>
+                Previously :
+                <ul>
+                    <li><a href="https://zendesk.com" target="_blank">Zendesk</a> as a Senior Software Engineer.</li>
                 <li><a href="https://autodesk.com" target="_blank">Autodesk</a> as a Senior Software Engineer.</li>
                 <li><a href="http://www.cossette.com/en" target="_blank">Cossette</a> as a Creative Technologist.</li>
             </ul>
-        </p>
-        <p>
-            You can find me on :
-            <ul>
-                <li><a href="https://github.com/yoannmoinet" target="_blank">GitHub</a></li>
+            </p>
+        </div>
+        <div class="animated-section">
+            <p>
+                You can find me on :
+                <ul>
+                    <li><a href="https://github.com/yoannmoinet" target="_blank">GitHub</a></li>
                 <li><a href="https://twitter.com/yoannm" target="_blank">Twitter</a></li>
                 <li><a href="https://www.linkedin.com/in/yoannmoinet/" target="_blank">LinkedIn</a></li>
             </ul>
-        </p>
-        <p>
-            I've made:
-            <ul>
-                <li><a href="https://isitbig.org" target="_blank">IsItBig.org</a></li>
+            </p>
+        </div>
+        <div class="animated-section">
+            <p>
+                I've made:
+                <ul>
+                    <li><a href="https://isitbig.org" target="_blank">IsItBig.org</a></li>
                 <li><a href="https://zwout.fr" target="_blank">Zwout</a></li>
                 <li><a href="https://getfenet.re" target="_blank">Fen&#234;tre</a></li>
                 <li><a href="https://github.com/yoannmoinet/nipplejs" target="_blank">NippleJS</a></li>
                 <li><a href="https://github.com/damonjs/damon" target="_blank">DamonJS</a></li>
             </ul>
-        </p>
-        <p>
-            I've written:
-            <ul>
-                <li>
-                    <strong>Electron on the AppStore :</strong>
-                    <ol>
-                        <li><a href="https://dev.to/yoannmoinet/electron-on-the-app-store-early-stages-27i0"
-                                target="_blank">Early stage</a></li>
+            </p>
+        </div>
+        <div class="animated-section">
+            <p>
+                I've written:
+                <ul>
+                    <li>
+                        <strong>Electron on the AppStore :</strong>
+                        <ol>
+                            <li><a href="https://dev.to/yoannmoinet/electron-on-the-app-store-early-stages-27i0"
+                                    target="_blank">Early stage</a></li>
                         <li><a href="https://dev.to/yoannmoinet/electron-on-the-app-store-pain-tears-nce"
                                 target="_blank">Pain & tears</a></li>
                         <li><a href="https://dev.to/yoannmoinet/electron-on-the-app-store-ship-it-4mf0"
@@ -135,9 +147,107 @@
                     </strong>
                 </li>
             </ul>
-        </p>
-        <p>You can contact me via <a href="https://forms.gle/E5JLobBKMZmLeh4HA">this form</a><!-- <a href="#" class="cryptedmail" data-name="yo" data-domain="nnmoi" data-tld="net" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"></a> -->. And get <a href="./assets/resume.pdf" target="_blank">my resume here</a>.</p>
+            </p>
+        </div>
+        <div class="animated-section">
+            <p>You can contact me via <a href="https://forms.gle/E5JLobBKMZmLeh4HA">this form</a><!-- <a href="#" class="cryptedmail" data-name="yo" data-domain="nnmoi" data-tld="net" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"></a> -->. And get <a href="./assets/resume.pdf" target="_blank">my resume here</a>.</p>
+        </div>
     </main>
+    <script>
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!prefersReducedMotion) {
+            const tl = anime.timeline({
+                easing: 'easeOutExpo',
+            duration: 1000
+        });
+
+        tl.add({
+            targets: 'header',
+            translateY: [-50, 0],
+            opacity: [0, 1]
+        })
+        .add({
+            targets: '#logo',
+            scale: [0, 1],
+            opacity: [0, 1]
+        }, '-=800') // Starts 800ms before the previous animation ends
+        .add({
+            targets: 'header h1',
+            translateX: [-50, 0],
+            opacity: [0, 1]
+        }, '-=700') // Stagger
+        .add({
+            targets: 'header h2',
+            translateX: [-50, 0],
+            opacity: [0, 1]
+        }, '-=700') // Stagger
+        .add({
+            targets: 'header h3',
+            translateX: [-50, 0],
+            opacity: [0, 1]
+        }, '-=700'); // Stagger
+
+            const sections = document.querySelectorAll('.animated-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        anime({
+                            targets: entry.target,
+                            translateY: [50, 0],
+                            opacity: [0, 1],
+                            duration: 800,
+                            easing: 'easeOutExpo',
+                        });
+                        observer.unobserve(entry.target); // Stop observing after animation
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // General links in lists hover effect
+            document.querySelectorAll('main ul li a:not(.button):not([href$=".pdf"])').forEach(link => {
+                link.addEventListener('mouseenter', (e) => {
+                    anime.remove(e.target);
+                    anime({
+                        targets: e.target,
+                        translateY: -3,
+                        duration: 200,
+                        easing: 'easeOutQuad'
+                    });
+                });
+                link.addEventListener('mouseleave', (e) => {
+                    anime.remove(e.target);
+                    anime({
+                        targets: e.target,
+                        translateY: 0,
+                        duration: 150,
+                        easing: 'easeInQuad'
+                    });
+                });
+            });
+        } else {
+            // Apply static final states to elements that would have been animated
+            document.querySelectorAll('.animated-section').forEach(section => {
+                section.style.opacity = 1;
+                section.style.transform = 'none';
+            });
+            // Header elements are visible by default, no specific styles needed here for them
+            // if their initial animated state (opacity: 0, transform: ...) is only applied by JS.
+            // If CSS sets them to opacity:0 initially for JS animation, that needs to be overridden here.
+            // The current CSS for .animated-section already handles this by being overridden in the media query.
+        }
+
+        // Note: Social media links like GitHub, Twitter, LinkedIn in the "You can find me on" section
+        // and "I've made" links are already <a> tags within <ul><li> structure.
+        // So, the general selector above ('main ul li a:not(.button):not([href$=".pdf"])')
+        // will apply to them, and they will get the translateY effect.
+        // No need for additional specific selectors for these if the translateY effect is desired for them.
+        // If a different effect (e.g. scale only) was desired for them, then specific selectors would be needed.
+    </script>
 </body>
 
 </html>

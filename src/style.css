@@ -91,6 +91,15 @@ pre {
 
 a {
   color: #1689be;
+  /* Ensure 'a' tags can be transformed */
+  display: inline-block;
+  text-decoration: none; /* Optional: common to remove underline for modern designs */
+  transition: none; /* Remove any default transitions that might conflict with anime.js */
+}
+
+main ul li a {
+  /* Specificity for links in lists, ensure they are block/inline-block for transform */
+  display: inline-block; 
 }
 
 /* 07 Secondary colors */
@@ -164,11 +173,13 @@ main {
 }
 
 header {
-  background-color: #23b9ff;
+  background: linear-gradient(45deg, #3a7bd5, #3a6073);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   line-height: 1.2;
   max-width: none;
   padding: 3vw 2em;
   text-align: center;
+  perspective: 1000px; /* Added for 3D hover effects on children */
 }
 
 #logo {
@@ -176,26 +187,54 @@ header {
   height: 120px;
   vertical-align: top;
   width: 120px;
+  transition: transform 0.3s ease-in-out;
+}
+
+#logo:hover {
+  transform: scale(1.1) rotate(5deg);
 }
 
 header h1 {
   color: rgb(255, 255, 255);
   font-size: 2.5em;
   font-weight: 300;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+header h1:hover {
+  transform: translateZ(5px);
 }
 
 header h2 {
   color: rgb(255, 255, 255);
   font-size: 1.5em;
   font-weight: 300;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+header h2:hover {
+  transform: translateZ(5px);
 }
 
 header h3 {
   color: rgb(255, 255, 255);
   font-weight: 300;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+header h3:hover {
+  transform: translateZ(5px);
 }
 
 /* Classes */
+
+.animated-section {
+  opacity: 0;
+  transform: translateY(50px);
+}
 
 .animate {
   animation-duration: 1s;
@@ -391,5 +430,35 @@ footer .button {
 
   .resource-icon {
     margin: 0 auto 1em;
+  }
+}
+
+/* Accessibility: Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Ensure elements animated by JS are in their final state */
+  /* Specifically for .animated-section if JS is disabled for motion */
+  .animated-section {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Reset hover states that rely on transitions disabled above */
+  #logo:hover {
+    transform: none !important; /* Reset logo hover */
+  }
+
+  header h1:hover,
+  header h2:hover,
+  header h3:hover {
+    transform: none !important; /* Reset header text hover */
   }
 }
