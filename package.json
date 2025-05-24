@@ -1,0 +1,15 @@
+{
+  "name": "yoannmoi.net-3d-cube",
+  "version": "1.0.0",
+  "description": "3D cube redesign of yoannmoi.net",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -c-1 -o",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "author": "Yoann Moinet (and Jules the AI Agent)",
+  "license": "MIT"
+}

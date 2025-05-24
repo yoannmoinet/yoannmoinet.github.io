@@ -19,4 +19,97 @@ body {
     overflow-y: auto; /* Allow scrolling within a face if content overflows */
 }
 
-/* Typography and scrollbars will be handled in a subsequent step */
+/* Typography enhancements for .cube-face */
+.cube-face h1,
+.cube-face h2,
+.cube-face h3 {
+    color: #61dafb; /* Accent color for headings */
+    margin-top: 0;
+    margin-bottom: 0.75em; /* Slightly more space for headings */
+}
+
+.cube-face h1 {
+    font-size: 1.8em; /* Or 28px / 30px */
+}
+
+.cube-face h2 {
+    font-size: 1.5em; /* Or 24px */
+}
+
+.cube-face h3 {
+    font-size: 1.2em; /* Or 20px */
+}
+
+.cube-face p {
+    font-size: 1em; /* Or 16px */
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+.cube-face ul,
+.cube-face ol {
+    padding-left: 20px; /* Standard indentation */
+    margin-bottom: 1em;
+}
+
+.cube-face li {
+    margin-bottom: 0.5em; /* Spacing between list items */
+}
+
+.cube-face a {
+    color: #98c379; /* Greenish accent for links */
+    text-decoration: none;
+}
+
+.cube-face a:hover,
+.cube-face a:focus { /* Added :focus for accessibility */
+    text-decoration: underline;
+    color: #b3e096; /* Lighter green on hover/focus */
+}
+
+/* Custom WebKit scrollbar styles for .cube-face */
+.cube-face::-webkit-scrollbar {
+    width: 10px;
+}
+
+.cube-face::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Darker track */
+    border-radius: 5px;
+}
+
+.cube-face::-webkit-scrollbar-thumb {
+    background: rgba(100, 110, 120, 0.5); /* Semi-transparent thumb */
+    border-radius: 5px;
+    border: 2px solid transparent; /* Creates padding around thumb */
+    background-clip: content-box;
+}
+
+.cube-face::-webkit-scrollbar-thumb:hover {
+    background: rgba(130, 140, 150, 0.7);
+    background-clip: content-box; /* Ensure hover background respects padding */
+}
+
+/* Firefox scrollbar styling (basic) */
+.cube-face { /* This duplicates .cube-face selector but is for scrollbar-specific properties */
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: rgba(100, 110, 120, 0.5) rgba(0, 0, 0, 0.1); /* thumb and track color */
+}
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
+.cube-face h1 { color: #61dafb; }
